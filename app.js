@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const indexRouter = require('./routes/index');
 require('dotenv').config();
 const MONGODB_URI_PROD =
-  process.env.MONGODB_URI_PROD || 'mongodb://localhost:27017/todo';
+  process.env.MONGODB_URI_PROD || 'mongodb://localhost:27017/todolist';
 console.log('mongoouri', MONGODB_URI_PROD);
 
 const app = express();
