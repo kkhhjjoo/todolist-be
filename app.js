@@ -10,7 +10,7 @@ console.log('mongoouri', MONGODB_URI_PROD);
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({ credentials: true, origin: "http://localhost:4000" }));
+app.use(cors());
 app.use('/api', indexRouter);
 const mongoURI = MONGODB_URI_PROD;
 
