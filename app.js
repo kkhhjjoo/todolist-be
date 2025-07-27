@@ -13,9 +13,8 @@ app.use(bodyParser.json());
 
 // CORS 설정을 더 구체적으로 설정
 const allowedOrigins = [
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'https://your-netlify-app.netlify.app', // 넷리파이 앱 URL로 변경하세요
+  'http://localhost:4000',
+  'https://todo-list-app-demo.netlify.app/', // 넷리파이 앱 URL로 변경하세요
   'https://todo-list-demo-e11643ecaddb.herokuapp.com',
 ];
 
