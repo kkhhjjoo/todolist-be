@@ -12,11 +12,24 @@ const app = express();
 app.use(bodyParser.json());
 
 // CORS 설정을 더 구체적으로 설정
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'https://your-netlify-app.netlify.app', // 넷리파이 앱 URL로 변경하세요
+  'https://todo-list-demo-e11643ecaddb.herokuapp.com',
+];
+
 const corsOptions = {
   origin: function (origin, callback) {
-    // 모든 origin 허용 (개발 중)
-    callback(null, true);
+    // 개발 환경에서는 origin이 null일 수 있음 (Postman 등)
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
   },
+  credentials: true,
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
