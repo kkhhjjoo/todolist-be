@@ -26,7 +26,11 @@ app.options('*', cors());
 
 // 루트 경로 추가
 app.get('/', (req, res) => {
-  res.json({ message: 'Todo List API Server is running!' });
+  console.log('Root endpoint accessed');
+  res.json({
+    message: 'Todo List API Server is running!',
+    timestamp: new Date().toISOString(),
+  });
 });
 
 app.use('/api', indexRouter);
@@ -45,4 +49,5 @@ mongoose
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`server on ${port}`);
+  console.log('CORS enabled for all origins');
 });
