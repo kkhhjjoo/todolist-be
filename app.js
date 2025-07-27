@@ -10,7 +10,19 @@ console.log('mongoouri', MONGODB_URI_PROD);
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+
+// CORS 설정을 더 구체적으로 설정
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://your-netlify-domain.netlify.app', // 넷리파이 도메인으로 변경
+    'https://*.netlify.app', // 모든 넷리파이 서브도메인 허용
+  ],
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
 app.use('/api', indexRouter);
 const mongoURI = MONGODB_URI_PROD;
 
@@ -27,4 +39,4 @@ mongoose
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
   console.log(`server on ${port}`);
-  });
+});
