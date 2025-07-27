@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 const corsOptions = {
   origin: [
     'http://localhost:4000',
-    'https://your-netlify-domain.netlify.app', // 넷리파이 도메인으로 변경
+    'https://todo-list-app-demo.netlify.app/', // 넷리파이 도메인으로 변경
     'https://*.netlify.app', // 모든 넷리파이 서브도메인 허용
   ],
   credentials: true,
