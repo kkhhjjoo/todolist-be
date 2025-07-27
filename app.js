@@ -24,7 +24,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // OPTIONS 요청 처리
-app.options('*', cors(corsOptions));
+app.options('/*', cors(corsOptions));
 
 // 루트 경로 추가
 app.get('/', (req, res) => {
