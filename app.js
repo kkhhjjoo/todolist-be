@@ -13,16 +13,18 @@ app.use(bodyParser.json());
 
 // CORS 설정을 더 구체적으로 설정
 const corsOptions = {
-  origin: [
-    'http://localhost:3000',
-    'https://todo-list-app-demo.netlify.app',
-    'https://*.netlify.app',
-    'https://todo-list-demo-e11643ecaddb.herokuapp.com',
-  ],
-  credentials: true,
+  origin: function (origin, callback) {
+    // 모든 origin 허용 (개발 중)
+    callback(null, true);
+  },
   optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
 };
 app.use(cors(corsOptions));
+
+// OPTIONS 요청 처리
+app.options('*', cors(corsOptions));
 
 app.use('/api', indexRouter);
 const mongoURI = MONGODB_URI_PROD;
