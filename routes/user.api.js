@@ -7,5 +7,6 @@ router.post('/', userController.createUser);
 
 // 로그인 endpoint
 router.post('/login', userController.LoginWithEmail);
+router.get('/me', )
 
 module.exports = router;
