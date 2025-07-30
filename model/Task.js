@@ -8,8 +8,13 @@ const taskSchema = Schema({
     },
     isComplete: {
         type: Boolean,
-        required: false
-    }
+        required: true
+    },
+    author:{
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "User"
+    },
 }, {timestamps: true}
 );
 
